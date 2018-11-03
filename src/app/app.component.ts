@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
+import { IntroPage } from '../pages/intro/intro';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,6 +21,15 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      this.storage.get('shownIntro').then((shown) => {
+        if(shown) {
+          this.openPage('home');
+        } else {
+          this.openPage('intro');
+          this.storage.set('shownIntro', true);
+        }
+      });
     });
   }
 
@@ -38,6 +49,8 @@ export class MyApp {
       if (!(this.nav.getActive().name === "HistoryPage")) {
         this.nav.push(HistoryPage);
       }
+    } else if (page === 'intro') {
+        this.nav.push(IntroPage);
     }
   }
 }

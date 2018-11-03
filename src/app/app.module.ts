@@ -9,13 +9,14 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
+import { IntroPage } from '../pages/intro/intro';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     HistoryPage,
+    IntroPage,
     ProgressBarComponent
   ],
   imports: [
@@ -27,7 +28,8 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
   entryComponents: [
     MyApp,
     HomePage,
-    HistoryPage
+    HistoryPage,
+    IntroPage
   ],
   providers: [
     StatusBar,

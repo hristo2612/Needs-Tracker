@@ -13,8 +13,6 @@ export class ProgressBarComponent {
 
   @Input()
   set progress(progress: string) {
-    console.log('prev value: ', this._progress);
-    console.log('got progress: ', progress);
     this._progress = progress;
   }
 
