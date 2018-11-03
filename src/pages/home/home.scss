@@ -1,3 +1,18 @@
 page-home {
 
+    .progress-bar-danger > div > div {
+        background-color: rgb(199, 35, 17) !important;
+    }
+
+    .progress-bar-warning > div > div {
+        background-color: rgb(219, 108, 34) !important;
+    }
+
+    .progress-bar-decent > div > div {
+        background-color: #d5db21  !important;
+    }
+
+    .progress-bar-good > div > div {
+        background-color: rgb(39, 182, 125) !important;
+    }
 }

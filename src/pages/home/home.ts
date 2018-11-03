@@ -9,6 +9,23 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 export class HomePage {
 
   data = { title:'', description:'', date:'', time:'' };
+  progressBars: any[] = [
+    {
+      percent: 10
+    },
+    {
+      percent: 30
+    },
+    {
+      percent: 60
+    },
+    {
+      percent: 100
+    },
+    {
+      percent: 76
+    }
+  ];
 
   constructor(public navCtrl: NavController,
     public localNotifications: LocalNotifications,
@@ -23,13 +40,13 @@ export class HomePage {
     //console.log(date);
     if ( this.platform.is('cordova') ) {
       this.localNotifications.requestPermission().then((permission) => {
-        this.localNotifications.schedule({
-          id: 1,
-          title: 'Just do it',
-          at: time,
-          text: 'Beat The Habbit, stay strong.. bitch',
-          sound: this.setSound()
-        });
+        // this.localNotifications.schedule({
+        //   id: 1,
+        //   title: 'Just do it',
+        //   at: time,
+        //   text: 'Beat The Habbit, stay strong.. bitch',
+        //   sound: this.setSound()
+        // });
         // this.localNotifications.schedule({
         //    id: 1,
         //    text: 'Delayed ILocalNotification',
@@ -47,6 +64,24 @@ export class HomePage {
       });
     }
 
+  }
+
+  ngOnInit() {
+    this.progressBars.forEach((bar) => {
+      this.setProgressBarClass(bar);
+    });
+  }
+
+  setProgressBarClass(target) {
+    if (target.percent > 75) {
+      target.className = 'good';
+    } else if (target.percent > 59) {
+      target.className = 'decent';
+    } else if (target.percent > 29) {
+      target.className = 'warning';
+    } else {
+      target.className = 'danger';
+    }
   }
 
   setSound() {
