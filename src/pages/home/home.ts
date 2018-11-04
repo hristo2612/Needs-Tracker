@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, AlertController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { CreateNeedPage } from '../create-need/create-need';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -9,28 +11,13 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 export class HomePage {
 
   data = { title:'', description:'', date:'', time:'' };
-  progressBars: any[] = [
-    {
-      percent: 10
-    },
-    {
-      percent: 30
-    },
-    {
-      percent: 60
-    },
-    {
-      percent: 100
-    },
-    {
-      percent: 76
-    }
-  ];
+  progressBars: any[] = [];
 
   constructor(public navCtrl: NavController,
     public localNotifications: LocalNotifications,
     public platform: Platform,
-    public alertCtrl: AlertController) {}
+    public alertCtrl: AlertController, 
+    private storage: Storage) {}
 
   submit() {
     console.log(this.data);
@@ -67,8 +54,13 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.progressBars.forEach((bar) => {
-      this.setProgressBarClass(bar);
+    this.storage.get('progressBars').then((progressData) => {
+      console.log(progressData);
+      this.progressBars = progressData;
+      // Set progress bar coloring classes
+      this.progressBars.forEach((bar) => {
+        this.setProgressBarClass(bar);
+      });
     });
   }
 
@@ -83,6 +75,11 @@ export class HomePage {
       target.className = 'danger';
     }
   }
+
+  createNeed(): void {
+    this.navCtrl.push(CreateNeedPage);
+  }
+
 
   setSound() {
     if (this.platform.is('android')) {

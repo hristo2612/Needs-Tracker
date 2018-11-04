@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Needs Tracker
+      Today
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,6 +14,6 @@
     <list [bars]="progressBars"></list>
   </div>
   <ion-fab right bottom>
-    <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+    <button (click)="createNeed()" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
