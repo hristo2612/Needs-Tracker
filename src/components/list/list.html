@@ -1,8 +1,13 @@
-<ion-card *ngFor="let bar of bars;">
-    <ion-card-header>
-      {{bar.className}}
+<ion-card *ngFor="let bar of bars; let i = index">
+    <ion-card-header (click)="showDescription({barIndex: i})">
+        <div text-left>
+            {{bar.need}}
+        </div>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content (click)="showDescription({barIndex: i})">
         <progress-bar [ngClass]="'progress-bar-' + bar.className" [progress]="bar.percent"></progress-bar>
     </ion-card-content>
+    <button class="close-button" (click)="promptDialog(bars, i)" icon-only>
+        <ion-icon name="close-circle"></ion-icon>
+    </button>
 </ion-card>

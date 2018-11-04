@@ -1,3 +1,15 @@
 list {
+    .card-md {
+        position: relative;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
 
+    .close-button {
+        position: absolute;
+        right: 1px;
+        color: #4c3836;
+        top: 13px;
+        background: transparent;
+    }
 }
