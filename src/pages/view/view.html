@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <span *ngIf="progress">{{progress.need}}</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Close</span>
+      </button>
+      <!-- <button ion-button (click)="dismiss()">
+            <span ion-text color="primary" showWhen="ios">Close</span>
+            <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        </button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="progress">
+    <div text-wrap>{{progress.description}}</div>
+    <progress-bar [ngClass]="'progress-bar-' + progress.className" [progress]="percent"></progress-bar>
+  </ion-item>
+  <ion-item>
+      <ion-range min="1" max="100" [(ngModel)]="percent" color="secondary" (ngModelChange)="onChange($event)">
+        <ion-label range-left>1</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+  </ion-item>
+</ion-content>
