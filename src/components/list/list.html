@@ -1,0 +1,8 @@
+<ion-card *ngFor="let bar of bars;">
+    <ion-card-header>
+      {{bar.className}}
+    </ion-card-header>
+    <ion-card-content>
+        <progress-bar [ngClass]="'progress-bar-' + bar.className" [progress]="bar.percent"></progress-bar>
+    </ion-card-content>
+</ion-card>

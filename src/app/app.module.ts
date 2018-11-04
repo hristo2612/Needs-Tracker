@@ -11,13 +11,15 @@ import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
 import { IntroPage } from '../pages/intro/intro';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { ListComponent } from '../components/list/list';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     HistoryPage,
     IntroPage,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
