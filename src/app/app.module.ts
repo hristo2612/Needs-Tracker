@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Dialogs } from '@ionic-native/dialogs';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import { MyApp } from './app.component';
@@ -12,14 +13,18 @@ import { HistoryPage } from '../pages/history/history';
 import { IntroPage } from '../pages/intro/intro';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { ListComponent } from '../components/list/list';
+import { CreateNeedPage } from '../pages/create-need/create-need';
+import { ViewPage } from '../pages/view/view';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     HistoryPage,
+    CreateNeedPage,
+    ViewPage,
     IntroPage,
     ProgressBarComponent,
-    ListComponent
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,13 +36,16 @@ import { ListComponent } from '../components/list/list';
     MyApp,
     HomePage,
     HistoryPage,
-    IntroPage
+    ViewPage,
+    IntroPage,
+    CreateNeedPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LocalNotifications
+    LocalNotifications,
+    Dialogs
   ]
 })
 export class AppModule {}
