@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
 import { IntroPage } from '../pages/intro/intro';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -52,7 +53,7 @@ export class MyApp {
       // Platform ready...
       statusBar.styleDefault();
       splashScreen.hide();
-      this.storage.set('progressBars', this.initialProgressBars);
+      //this.storage.set('progressBars', this.initialProgressBars);
       this.storage.get('shownIntro').then((shown) => {
         if(!shown) {
           this.openPage('intro');
@@ -73,6 +74,10 @@ export class MyApp {
     } else if (page === 'history') {
       if (!(this.nav.getActive().name === "HistoryPage")) {
         this.nav.push(HistoryPage);
+      }
+    } else if (page === 'settings') {
+      if (!(this.nav.getActive().name === "SettingsPage")) {
+        this.nav.push(SettingsPage);
       }
     } else if (page === 'intro') {
         this.nav.push(IntroPage);
