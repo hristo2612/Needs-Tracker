@@ -1,10 +1,27 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>History</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+    <ion-card>
+        <ion-card-header>
+          Bar Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+   
+      <ion-card>
+        <ion-card-header>
+          Line Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #lineCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
 </ion-content>
