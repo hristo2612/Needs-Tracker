@@ -43,9 +43,10 @@ export class ViewPage {
     this.getProgressData().then((progressData) => {
       let currentProgress = progressData;
       currentProgress[this.navParams.get('barIndex')] = this.progress;
-      this.setProgressData(currentProgress);
+      this.setProgressData(currentProgress).then((progress) => {
+        this.viewCtrl.dismiss();
+      });
     });
-    this.viewCtrl.dismiss();
   }
 
 }
