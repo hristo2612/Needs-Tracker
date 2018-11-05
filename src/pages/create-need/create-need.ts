@@ -6,12 +6,20 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'create-need.html',
 })
 export class CreateNeedPage {
+  data: object = {
+    title: '',
+    description: '',
+    percent: 50
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateNeedPage');
+  }
+
+  submit() {
+
   }
 
 }
