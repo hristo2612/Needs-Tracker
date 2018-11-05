@@ -18,7 +18,7 @@ export class HistoryPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryPage');
+    
   }
 
 }

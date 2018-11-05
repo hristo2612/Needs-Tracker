@@ -5,7 +5,7 @@
         </div>
     </ion-card-header>
     <ion-card-content (click)="showDescription({barIndex: i})">
-        <progress-bar [ngClass]="'progress-bar-' + bar.className" [progress]="bar.percent"></progress-bar>
+        <progress-bar [progress]="bar.percent"></progress-bar>
     </ion-card-content>
     <button class="close-button" (click)="promptDialog(bars, i)" icon-only>
         <ion-icon name="close-circle"></ion-icon>

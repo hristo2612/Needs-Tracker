@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 import { ActionSheetController } from "ionic-angular";
-import { Dialogs } from '@ionic-native/dialogs';
 import { ModalController } from 'ionic-angular';
 import { ViewPage } from "../../pages/view/view";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "list",
@@ -20,8 +20,9 @@ export class ListComponent {
     this._bars = bars;
   }
 
-  constructor(public actionSheetCtrl: ActionSheetController, private dialogs: Dialogs, public modalCtrl: ModalController) {
-    //console.log("Hello ListComponent Component");
+  @Output() onChangeProgress = new EventEmitter();
+
+  constructor(public actionSheetCtrl: ActionSheetController, public modalCtrl: ModalController, private storage: Storage) {
   }
 
   promptDialog(array, index): void {
@@ -42,9 +43,27 @@ export class ListComponent {
     actionSheet.present();
   }
 
+  setBarClasses(arr) {
+    arr.forEach((target) => {
+      if (target.percent > 75) {
+        target.className = 'good';
+      } else if (target.percent > 59) {
+        target.className = 'decent';
+      } else if (target.percent > 29) {
+        target.className = 'warning';
+      } else {
+        target.className = 'danger';
+      }
+    });
+  }
+
   showDescription(indexObject): void {
     const modal = this.modalCtrl.create(ViewPage, indexObject);
     modal.present();
-    //this.dialogs.alert(bar.description, 'Description');
+    modal.onWillDismiss(() => {
+      this.storage.get('progressBars').then((data) => {
+        this.onChangeProgress.emit(data);
+      });
+    });
   }
 }
