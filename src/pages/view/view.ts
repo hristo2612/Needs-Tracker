@@ -23,29 +23,28 @@ export class ViewPage {
   ionViewDidLoad() {
     this.storage.get('progressBars').then((progressData) => {
       this.progress = progressData[this.navParams.get('barIndex')];
-      this.setProgressBarClass(this.progress);
       this.percent = this.progress.percent;
     });
   }
 
   onChange(percent) {
     this.progress.percent = percent;
-    this.setProgressBarClass(this.progress);
   }
 
-  setProgressBarClass(target) {
-    if (target.percent > 75) {
-      target.className = 'good';
-    } else if (target.percent > 59) {
-      target.className = 'decent';
-    } else if (target.percent > 29) {
-      target.className = 'warning';
-    } else {
-      target.className = 'danger';
-    }
+  getProgressData(): Promise<IProgress[]> {
+    return this.storage.get('progressBars');
+  }
+
+  setProgressData(data): Promise<IProgress[]> {
+    return this.storage.set('progressBars', data);
   }
 
   dismiss() {
+    this.getProgressData().then((progressData) => {
+      let currentProgress = progressData;
+      currentProgress[this.navParams.get('barIndex')] = this.progress;
+      this.setProgressData(currentProgress);
+    });
     this.viewCtrl.dismiss();
   }
 
