@@ -11,7 +11,7 @@
 
 <ion-content padding>
   <div>
-    <list [bars]="progressBars"></list>
+    <list (onChangeProgress)="onProgressBarChanged($event)" [bars]="progressBars"></list>
   </div>
   <ion-fab right bottom>
     <button (click)="createNeed()" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>

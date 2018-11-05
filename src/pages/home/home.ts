@@ -55,25 +55,12 @@ export class HomePage {
 
   ngOnInit() {
     this.storage.get('progressBars').then((progressData) => {
-      console.log(progressData);
       this.progressBars = progressData;
-      // Set progress bar coloring classes
-      this.progressBars.forEach((bar) => {
-        this.setProgressBarClass(bar);
-      });
     });
   }
 
-  setProgressBarClass(target) {
-    if (target.percent > 75) {
-      target.className = 'good';
-    } else if (target.percent > 59) {
-      target.className = 'decent';
-    } else if (target.percent > 29) {
-      target.className = 'warning';
-    } else {
-      target.className = 'danger';
-    }
+  onProgressBarChanged(changed) {
+    this.progressBars = changed;
   }
 
   createNeed(): void {
