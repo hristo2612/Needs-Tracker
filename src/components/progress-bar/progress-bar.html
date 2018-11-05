@@ -1,5 +1,5 @@
 <div class="progress-outer">
-  <div class="progress-inner" [style.width]="progress + '%'">
+  <div class="progress-inner" [ngClass]="'progress-bar-' + className"  [style.width]="progress + '%'">
       {{progress}}%
   </div>
 </div>
