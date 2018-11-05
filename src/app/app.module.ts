@@ -15,6 +15,7 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { ListComponent } from '../components/list/list';
 import { CreateNeedPage } from '../pages/create-need/create-need';
 import { ViewPage } from '../pages/view/view';
+import { SettingsPage } from '../pages/settings/settings';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,8 +24,10 @@ import { ViewPage } from '../pages/view/view';
     CreateNeedPage,
     ViewPage,
     IntroPage,
+    SettingsPage,
     ProgressBarComponent,
     ListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { ViewPage } from '../pages/view/view';
     HomePage,
     HistoryPage,
     ViewPage,
+    SettingsPage,
     IntroPage,
     CreateNeedPage
   ],
