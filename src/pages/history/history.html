@@ -7,21 +7,39 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
-        <ion-card-header>
-          Bar Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #barCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-   
-      <ion-card>
-        <ion-card-header>
-          Line Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #lineCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
+  <div>
+    <ion-select [(ngModel)]="selectedTimeFrame" (ngModelChange)="onTimeFrameChange($event)">
+      <ion-option>Today</ion-option>
+      <ion-option>Yesterday</ion-option>
+      <ion-option>This Week</ion-option>
+      <ion-option>This Month</ion-option>
+      <ion-option>This Year</ion-option>
+    </ion-select>
+  </div>
+  <div class="position-right">
+    <button (click)="toggleBarChart()" [ngClass]="selectedBarChartClass" ion-button icon-only color="danger">
+      <ion-icon class="rotate-icon" name="list"></ion-icon>
+    </button>
+    <button (click)="toggleLineChart()" [ngClass]="selectedLineChartClass" ion-button icon-only color="danger">
+      <ion-icon name="pulse"></ion-icon>
+    </button>
+  </div>
+
+  <ion-card [hidden]="!showBarChart">
+    <ion-card-header>
+      Individual Progress
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card [hidden]="!showLineChart" class="marginate">
+    <ion-card-header>
+      Overall Progress
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

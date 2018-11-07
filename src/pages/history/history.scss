@@ -6,4 +6,31 @@ page-history {
     ion-card-header {
         font-weight: bold;
     }
+
+    .position-right {
+        position: absolute;
+        right: 11px;
+        top: 5px;
+    }
+
+    .item-cover {
+        width: 50%;
+        height: 50px;
+    }
+
+    .item-button[icon-only] {
+        padding: 0 3px !important;
+    }
+
+    .marginate {
+        margin-top: 10px;
+    }
+
+    .selected {
+        background-color: #bb1300 !important;
+    }
+
+    .rotate-icon:before {
+        transform: rotate(270deg);
+    }
 }

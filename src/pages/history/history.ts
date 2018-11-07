@@ -1,13 +1,8 @@
 import { Component, ViewChild } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { Chart } from "chart.js";
-/**
- * Generated class for the HistoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
+Chart.defaults.global.legend.display = false;
 @Component({
   selector: "page-history",
   templateUrl: "history.html"
@@ -21,7 +16,37 @@ export class HistoryPage {
   barChart: any;
   lineChart: any;
 
+  showBarChart: boolean = true;
+  showLineChart: boolean = false;
+
+  selectedBarChartClass: string = 'selected';
+  selectedLineChartClass: string = '';
+
+  selectedTimeFrame: string = 'Today';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  toggleBarChart() {
+    this.showBarChart =  !this.showLineChart ? this.showBarChart : !this.showBarChart;
+    if (this.showBarChart) {
+      this.selectedBarChartClass = 'selected';
+    } else {
+      this.selectedBarChartClass = ''
+    }
+  }
+
+  toggleLineChart() {
+    this.showLineChart = !this.showBarChart ? this.showLineChart : !this.showLineChart;
+    if (this.showLineChart) {
+      this.selectedLineChartClass = 'selected';
+    } else {
+      this.selectedLineChartClass = '';
+    }
+  }
+
+  onTimeFrameChange(period) {
+    console.log(period);
+  }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -30,7 +55,6 @@ export class HistoryPage {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [
           {
-            label: "# of Votes",
             data: [88, 19, 3, 5, 2, 3],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -79,7 +103,6 @@ export class HistoryPage {
         ],
         datasets: [
           {
-            label: "My History",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
@@ -103,5 +126,13 @@ export class HistoryPage {
         ]
       }
     });
+  }
+
+  renderBarChart() {
+
+  }
+
+  renderLineChart() {
+
   }
 }
