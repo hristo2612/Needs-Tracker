@@ -48,12 +48,22 @@ export class MyApp {
     }
   ];
 
+  currentDate: any = {
+    date: {
+      day: '',
+      month: ''
+    },
+    time: {
+      hour: '',
+      minute: ''
+    }
+  };
+
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage) {
     platform.ready().then(() => {
       // Platform ready...
       statusBar.styleDefault();
       splashScreen.hide();
-      //this.storage.set('progressBars', this.initialProgressBars);
       this.storage.get('shownIntro').then((shown) => {
         if(!shown) {
           this.openPage('intro');
@@ -66,6 +76,57 @@ export class MyApp {
   }
 
   ngOnInit() {
+    // On init, set date to the Current day/month/hour/minute
+    const date = new Date();
+    this.currentDate.date.day = date.getDate();
+    this.currentDate.date.month = date.getMonth();
+    this.currentDate.time.hour = date.getHours();
+    this.currentDate.time.minute = date.getMinutes();
+
+    this.getCurrentDate().then((current) => {
+      if (current) {
+        // If date from storage is different than our newly produced date, set new date to current and add old to array
+        if ((current.date.day !== this.currentDate.date.day || current.date.month !== this.currentDate.date.month)) {
+          let allProgressBarsForEveryDay = null;
+          this.getAllProgress().then((all) => {
+            allProgressBarsForEveryDay = all;
+            return this.getProgress();
+          }).then((progress) => {
+            let newAll = allProgressBarsForEveryDay || [];
+            newAll.push({date: current, bars: progress});
+            this.setAllProgress(newAll);
+            this.setCurrentDate(this.currentDate);
+          });
+        }
+      } else {
+        this.setCurrentDate(this.currentDate);
+      }
+    });
+  }
+
+  getCurrentDate() {
+    return this.storage.get('currentDate');
+  }
+
+  setCurrentDate(date) {
+    return this.storage.set('currentDate', date);
+  }
+
+  getProgress() {
+    return this.storage.get('progressBars');
+
+  }
+
+  setProgress(bar) {
+    return this.storage.set('progressBars', bar);
+  }
+
+  getAllProgress() {
+    return this.storage.get('allProgress');
+  }
+
+  setAllProgress(progressBarsArray) {
+    return this.storage.set('allProgress', progressBarsArray);
   }
 
   openPage(page): void {
