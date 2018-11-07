@@ -1,6 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { Chart } from "chart.js";
+import { StoreProvider } from "../../providers/store/store";
 
 Chart.defaults.global.legend.display = false;
 @Component({
@@ -24,7 +25,7 @@ export class HistoryPage {
 
   selectedTimeFrame: string = 'Today';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private store: StoreProvider) {}
 
   toggleBarChart() {
     this.showBarChart =  !this.showLineChart ? this.showBarChart : !this.showBarChart;
@@ -49,6 +50,7 @@ export class HistoryPage {
   }
 
   ionViewDidLoad() {
+
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "bar",
       data: {
@@ -81,7 +83,8 @@ export class HistoryPage {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true
+                min: 1,
+                max: 100
               }
             }
           ]
@@ -124,7 +127,20 @@ export class HistoryPage {
             spanGaps: false
           }
         ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                min: 1,
+                max: 100
+              }
+            }
+          ]
+        }
       }
+
     });
   }
 
