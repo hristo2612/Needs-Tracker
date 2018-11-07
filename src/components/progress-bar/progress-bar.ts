@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { StoreProvider } from '../../providers/store/store';
 
 @Component({
   selector: 'progress-bar',
@@ -27,7 +28,7 @@ export class ProgressBarComponent {
     }
   }
 
-  constructor() {
+  constructor(private store: StoreProvider) {
   }
 
 }

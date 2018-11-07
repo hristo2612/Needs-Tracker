@@ -1,13 +1,17 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Notifications</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <ion-item>
+      <ion-label>Toggle %</ion-label>
+      <ion-toggle [(ngModel)]="providePercents" (ngModelChange)="onTogglePercentChange($event)"></ion-toggle>
+    </ion-item>
     <ion-item>
       <ion-label>Toggle notifications</ion-label>
       <ion-toggle [(ngModel)]="provideNotifications" (ngModelChange)="onToggleChange($event)"></ion-toggle>
