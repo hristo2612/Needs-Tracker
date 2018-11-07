@@ -16,6 +16,7 @@ import { ListComponent } from '../components/list/list';
 import { CreateNeedPage } from '../pages/create-need/create-need';
 import { ViewPage } from '../pages/view/view';
 import { SettingsPage } from '../pages/settings/settings';
+import { StoreProvider } from '../providers/store/store';
 @NgModule({
   declarations: [
     MyApp,
@@ -49,7 +50,8 @@ import { SettingsPage } from '../pages/settings/settings';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalNotifications,
-    Dialogs
+    Dialogs,
+    StoreProvider
   ]
 })
 export class AppModule {}
