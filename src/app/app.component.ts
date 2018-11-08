@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
 import { IntroPage } from '../pages/intro/intro';
 import { SettingsPage } from '../pages/settings/settings';
+import { StoreProvider } from '../providers/store/store';
 
 @Component({
   templateUrl: 'app.html'
@@ -59,7 +60,7 @@ export class MyApp {
     }
   };
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage, private store: StoreProvider) {
     platform.ready().then(() => {
       // Platform ready...
       statusBar.styleDefault();
@@ -69,8 +70,13 @@ export class MyApp {
           this.openPage('intro');
           this.storage.set('shownIntro', true);
           // Fill in our progressBars with default info, for when the user is presented with the Intro Page
-          this.storage.set('progressBars', this.initialProgressBars);
+          this.store.setProgress(this.initialProgressBars);
         }
+      });
+
+      // Get toggle percent setting and set store value to it
+      this.storage.get('togglePercent').then((value) => {
+        this.store.showPercent = value || false;
       });
     });
   }
@@ -83,50 +89,25 @@ export class MyApp {
     this.currentDate.time.hour = date.getHours();
     this.currentDate.time.minute = date.getMinutes();
 
-    this.getCurrentDate().then((current) => {
+    this.store.getCurrentDate().then((current) => {
       if (current) {
         // If date from storage is different than our newly produced date, set new date to current and add old to array
         if ((current.date.day !== this.currentDate.date.day || current.date.month !== this.currentDate.date.month)) {
           let allProgressBarsForEveryDay = null;
-          this.getAllProgress().then((all) => {
+          this.store.getAllProgress().then((all) => {
             allProgressBarsForEveryDay = all;
-            return this.getProgress();
+            return this.store.getProgress();
           }).then((progress) => {
             let newAll = allProgressBarsForEveryDay || [];
             newAll.push({date: current, bars: progress});
-            this.setAllProgress(newAll);
-            this.setCurrentDate(this.currentDate);
+            this.store.setAllProgress(newAll);
+            this.store.setCurrentDate(this.currentDate);
           });
         }
       } else {
-        this.setCurrentDate(this.currentDate);
+        this.store.setCurrentDate(this.currentDate);
       }
     });
-  }
-
-  getCurrentDate() {
-    return this.storage.get('currentDate');
-  }
-
-  setCurrentDate(date) {
-    return this.storage.set('currentDate', date);
-  }
-
-  getProgress() {
-    return this.storage.get('progressBars');
-
-  }
-
-  setProgress(bar) {
-    return this.storage.set('progressBars', bar);
-  }
-
-  getAllProgress() {
-    return this.storage.get('allProgress');
-  }
-
-  setAllProgress(progressBarsArray) {
-    return this.storage.set('allProgress', progressBarsArray);
   }
 
   openPage(page): void {
