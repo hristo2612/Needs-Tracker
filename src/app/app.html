@@ -1,3 +1,4 @@
+<!-- MENU -->
 <ion-menu [content]="content">
     <ion-header>
         <ion-toolbar color="dark">
@@ -6,17 +7,18 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item menuClose (click)="openPage('home')">
+            <button class="menu-item" ion-item menuClose (click)="openPage('home')">
                 Today
             </button>
-            <button ion-item menuClose (click)="openPage('history')">
+            <button class="menu-item" ion-item menuClose (click)="openPage('history')">
                 History
             </button>
-            <button ion-item menuClose (click)="openPage('settings')">
+            <button class="menu-item" ion-item menuClose (click)="openPage('settings')">
                 Settings
             </button>
         </ion-list>
     </ion-content>
 </ion-menu>
 
+<!-- MAIN CONTENT -->
 <ion-nav #content [root]="rootPage"></ion-nav>
