@@ -76,7 +76,11 @@ export class MyApp {
 
       // Get toggle percent setting and set store value to it
       this.storage.get('togglePercent').then((value) => {
-        this.store.showPercent = value || false;
+        if (value === true || value === false) {
+          this.store.showPercent = value;
+        } else {
+          this.store.showPercent = true;
+        }
       });
     });
   }
