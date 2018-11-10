@@ -6,7 +6,6 @@ interface IProgress {
   need?: string;
   description?: string;
   percent?: number;
-  className?: string;
 }
 
 @Component({
@@ -39,14 +38,18 @@ export class ViewPage {
     return this.storage.set('progressBars', data);
   }
 
-  dismiss() {
+  saveProgress() {
     this.getProgressData().then((progressData) => {
       let currentProgress = progressData;
       currentProgress[this.navParams.get('barIndex')] = this.progress;
       this.setProgressData(currentProgress).then((progress) => {
-        this.viewCtrl.dismiss();
+        this.dismiss();
       });
     });
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }
