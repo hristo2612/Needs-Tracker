@@ -33,4 +33,13 @@ page-history {
     .rotate-icon:before {
         transform: rotate(270deg);
     }
+
+    .select-item {
+        padding-left: 0px !important;
+        background: transparent !important;
+
+        .item-inner {
+            border: none !important;
+        }
+    }
 }
