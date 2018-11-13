@@ -3,7 +3,6 @@ import { NavController, Platform, AlertController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { CreateNeedPage } from '../create-need/create-need';
 import { Storage } from '@ionic/storage';
-import { StoreProvider } from '../../providers/store/store';
 
 @Component({
   selector: 'page-home',
@@ -18,8 +17,7 @@ export class HomePage {
     public localNotifications: LocalNotifications,
     public platform: Platform,
     public alertCtrl: AlertController, 
-    private storage: Storage,
-    private store: StoreProvider) {}
+    private storage: Storage) {}
 
   submit() {
     console.log(this.data);
