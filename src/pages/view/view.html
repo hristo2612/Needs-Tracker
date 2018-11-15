@@ -18,7 +18,7 @@
 <ion-content>
   <ion-item *ngIf="progress">
     <div class="description-box" text-wrap>{{progress.description}}</div>
-    <progress-bar [ngClass]="'progress-bar-' + progress.className" [progress]="percent"></progress-bar>
+    <progress-bar [ngClass]="'progress-bar-' + progress.className" [progress]="percent" [index]="navParams.get('barIndex')"></progress-bar>
   </ion-item>
   <ion-item *ngIf="progress">
       <ion-range min="1" max="100" [(ngModel)]="percent" color="primary" pin="true" (ngModelChange)="onChange($event)">

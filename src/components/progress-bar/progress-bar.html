@@ -1,5 +1,5 @@
-<div class="progress-outer">
-  <div class="progress-inner" [ngClass]="'progress-bar-' + className"  [style.width]="progress + '%'">
+<div class="progress-outer" (pan)="swipe($event)">
+  <div class="progress-inner" [ngClass]="[ store.showPercent ? 'progress-with-percent': '', !store.showPercent ? 'progress-without-percent': '', 'progress-bar-' + className ]"  [style.width]="progress + '%'">
       {{store.showPercent ? (progress + '%') : ''}}
   </div>
 </div>
