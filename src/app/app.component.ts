@@ -20,32 +20,32 @@ export class MyApp {
     {
       need: 'Work',
       percent: 80,
-      description: 'How is work today? Good? Bad?'
+      description: 'Finished work or chores'
     },
     {
       need: 'Social',
       percent: 70,
-      description: 'How recently have you seen your friends?'
+      description: 'Your social interactions'
     },
     {
       need: 'Mental Health',
       percent: 60,
-      description: 'How is your mental state for today? Are you happy, anxious or perhaps stressed?'
+      description: 'State of your mind, perhaps you might be feeling under the weather or over the moon?'
     },
     {
       need: 'Family',
       percent: 50,
-      description: 'How much time have you spent with your family members, just enough, too little?'
+      description: 'Did you interact with your family today?'
     },
     {
       need: 'Environment',
       percent: 40,
-      description: 'How do you feel about the state of your home place? Maybe a little bit dirty or dusty, or shining like a diamond?'
+      description: 'State of your home place. Is it dusty or clean?'
     },
     {
       need: 'Energy',
       percent: 10,
-      description: 'How much power do you think you have. Are you feeling a bit tired, sick or just great!?'
+      description: 'Define your energy levels for today'
     }
   ];
 
