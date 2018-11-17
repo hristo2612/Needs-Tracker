@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-
-interface IProgress {
-  need?: string;
-  description?: string;
-  percent?: number;
-}
+import { NavParams, ViewController } from 'ionic-angular';
+import { StoreProvider } from '../../providers/store/store';
+import { IProgress } from '../../app/models/progress';
 
 @Component({
   selector: 'page-view',
@@ -16,35 +11,13 @@ export class ViewPage {
   progress: IProgress;
   percent: number = 50;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private storage: Storage) {
+  constructor(public navParams: NavParams, public viewCtrl: ViewController, private store: StoreProvider) {
   }
 
   ionViewDidLoad() {
-    this.storage.get('progressBars').then((progressData) => {
+    this.store.getProgress().then((progressData) => {
       this.progress = progressData[this.navParams.get('barIndex')];
       this.percent = this.progress.percent;
-    });
-  }
-
-  onChange(percent) {
-    this.progress.percent = percent;
-  }
-
-  getProgressData(): Promise<IProgress[]> {
-    return this.storage.get('progressBars');
-  }
-
-  setProgressData(data): Promise<IProgress[]> {
-    return this.storage.set('progressBars', data);
-  }
-
-  saveProgress() {
-    this.getProgressData().then((progressData) => {
-      let currentProgress = progressData;
-      currentProgress[this.navParams.get('barIndex')] = this.progress;
-      this.setProgressData(currentProgress).then((progress) => {
-        this.dismiss();
-      });
     });
   }
 

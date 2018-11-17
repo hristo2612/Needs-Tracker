@@ -1,6 +1,8 @@
 page-view {
     .item-md {
         padding-left: 0;
+        background: #333;
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     }
     .item-inner {
         padding-left: 17px;
@@ -8,8 +10,27 @@ page-view {
         border: none !important;
     }
 
+    .toolbar-background {
+        background: color($colors, dark);
+    }
+
+    .toolbar-title {
+        color: color($colors, light);
+    }
+
+    .dismiss-button {
+        color: color($colors, light);
+    }
+
     .description-box {
+        color: #E9E2DC;
         margin-top: 10px;
-        margin-bottom: 21px;
+        padding: 10px;
+        font-size: 26px;
+        margin-bottom: 26px;
+    }
+    
+    .fixed-content, .scroll-content .progress-outer {
+        background: #333;
     }
 }
