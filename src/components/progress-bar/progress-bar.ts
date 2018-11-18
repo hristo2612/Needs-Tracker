@@ -49,17 +49,13 @@ export class ProgressBarComponent {
     if (event.isFinal) {
       this.saveProgress();
     }
-    console.log(event);
   }
 
   saveProgress() {
     this.getProgressData().then((progressData) => {
       let currentProgress = progressData;
       currentProgress[this.index].percent = parseInt(this._progress);
-      this.setProgressData(currentProgress).then((progress) => {
-        //this.dismiss();
-        console.log('progress data saved')
-      });
+      this.setProgressData(currentProgress);
     });
   }
 
