@@ -3,8 +3,12 @@ page-settings {
         padding-left: 0;
     }
     .item-inner {
-        padding-left: 17px;
-        padding-right: 17px;
-        border: none !important;
+        padding: 10px 17px 10px 17px;
+    }
+    
+    .reminded-item {
+        .item-inner {
+            border-bottom: none !important;
+        }
     }
 }
