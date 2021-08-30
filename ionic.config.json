@@ -1,0 +1,7 @@
+{
+  "name": "Needs Tracker Updated",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
