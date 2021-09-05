@@ -1,7 +1,0 @@
-{
-  "name": "ionic-local-notif",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
