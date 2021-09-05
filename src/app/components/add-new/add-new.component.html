@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Create New</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="add-new-container" [formGroup]="form">
+    <div class="add-new-form-input">
+      <ion-item>
+        <ion-label position="floating">Name your Need</ion-label>
+        <ion-input formControlName="need"></ion-input>
+      </ion-item>
+    </div>
+    <div class="add-new-form-input">
+      <ion-item>
+        <ion-label position="floating">Give it a description</ion-label>
+        <ion-input formControlName="description"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="add-new-form-input">
+      <ion-item>
+        <ion-range formControlName="percent" min="0" max="100" pin="true" color="danger">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">100</ion-label>
+        </ion-range>
+      </ion-item>
+    </div>
+
+    <div class="add-new-form-input">
+      <ion-button (click)="addNew()" [disabled]="!form.valid" color="success" expand="block">Add</ion-button>
+    </div>
+
+    <div class="add-new-form-input">
+      <ion-text *ngIf="form.get('need').dirty && !form.get('need').valid" color="danger">* You need to provide a Need</ion-text>
+      <br>
+      <ion-text *ngIf="form.get('description').dirty && !form.get('description').valid" color="danger">* You need to provide a short Description</ion-text>
+      <br>
+      <ion-text *ngIf="form.get('percent').dirty && !form.get('percent').valid" color="danger">* You need to select Mood Percent (0 to 100)</ion-text>
+    </div>
+  </div>
+</ion-content>

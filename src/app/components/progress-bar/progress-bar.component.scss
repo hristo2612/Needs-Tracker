@@ -1,0 +1,42 @@
+.progress-outer {
+  width: 96%;
+  margin: 10px 2%;
+  padding: 3px;
+  text-align: center;
+  background-color: aliceblue;
+  border: 1px solid #dcdcdc;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.progress-inner {
+  min-width: 15%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #488aff;
+}
+
+.progress-with-percent {
+  padding: 3px;
+}
+
+.progress-without-percent {
+  padding: 10px;
+}
+
+.progress-bar-danger {
+  background-color: rgb(199, 35, 17) !important;
+}
+
+.progress-bar-warning {
+  background-color: rgb(219, 108, 34) !important;
+}
+
+.progress-bar-decent {
+  background-color: #d5db21  !important;
+}
+
+.progress-bar-good {
+  background-color: #1ec107 !important;
+}

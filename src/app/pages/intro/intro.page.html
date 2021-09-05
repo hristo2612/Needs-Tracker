@@ -1,0 +1,63 @@
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <ion-slides>
+
+    <ion-slide>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <!-- <img style="width: 300px; "  src="assets/pictures/slide-1.png"/> -->
+          <h2 translate>Welcome!</h2>
+          <p translate>Needs Tracker is inspired by "The Sims" mood tracker.</p>
+          <ion-button (click)="nextSlide()" color="primary">Next</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <!-- <img style="width: 300px; " src="assets/pictures/slide-2.png"/> -->
+          <h2>Track your Mood</h2>
+          <p>You can come here anytime you feel different, be it happy, sad or anything in between.
+          </p>
+          <ion-button (click)="nextSlide()" color="warning">Next</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <!-- <img style="width: 300px; " src="assets/pictures/slide-3.png"/> -->
+          <h2>Check your Progress</h2>
+          <p>See how you have been throughout the days with the option to view past days.</p>
+          <ion-button (click)="nextSlide()" color="success">Next</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <!-- <img style="width: 300px; " src="assets/pictures/slide-3.png"/> -->
+          <h2>Set Reminders</h2>
+          <p>Remind yourself when to check in the app. It could be in the morning afternoon, or heck
+            even at midnight!</p>
+          <ion-button (click)="nextSlide()" color="success">Next</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <!-- <img style="width: 300px; " src="assets/pictures/slide-4.png"/> -->
+          <h2>Are you ready?</h2>
+          <ion-button (click)="finishTutorial()" fill="clear">Let's go <ion-icon slot="end"
+              name="arrow-forward"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

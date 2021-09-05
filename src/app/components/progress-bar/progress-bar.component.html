@@ -1,0 +1,5 @@
+<div class="progress-outer gesture__zone" (pan)="swipe($event)">
+  <div class="progress-inner" [ngClass]="[ showPercent ? 'progress-with-percent': '', !showPercent ? 'progress-without-percent': '', 'progress-bar-' + className ]"  [style.width]="progress.percent + '%'">
+      {{showPercent ? (progress.percent + '%') : ''}}
+  </div>
+</div>

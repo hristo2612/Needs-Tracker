@@ -1,0 +1,17 @@
+<ion-header *ngIf="bar">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{bar.need}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="bar">
+  <div class="description-box">{{bar.description}}</div>
+  <div class="progress-box">
+    <app-progress-bar [progress]="bar"></app-progress-bar>
+  </div>
+</ion-content>

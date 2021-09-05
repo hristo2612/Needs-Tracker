@@ -1,0 +1,13 @@
+<ion-card *ngFor="let bar of bars;">
+  <ion-card-header (click)="showDescription(bar)">
+      <ion-card-title>
+        {{bar.need}}
+      </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <app-progress-bar [progress]="bar"></app-progress-bar>
+  </ion-card-content>
+  <button class="close-button" (click)="promptDialog(bar)">
+      <ion-icon name="close-circle"></ion-icon>
+  </button>
+</ion-card>

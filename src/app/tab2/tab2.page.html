@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      History
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,33 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">History</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="ion-padding">
+    <ion-item class="select-item">
+      <ion-select [(ngModel)]="selectedLabel" (ngModelChange)="onLabelChange($event)">
+          <ion-select-option *ngFor="let label of allLabels">{{label}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        Overview
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+      </ion-card-content>
+    </ion-card>
+ 
+    <ion-card>
+      <ion-card-header>
+        History
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

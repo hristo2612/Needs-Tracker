@@ -1,0 +1,12 @@
+{
+	"appId": "io.tracker.needs",
+	"appName": "Needs Tracker Updated",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"LocalNotifications": {
+			"iconColor": "#488AFF",
+			"sound": "beep.wav"
+		}
+	}
+}

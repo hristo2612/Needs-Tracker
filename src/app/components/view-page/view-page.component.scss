@@ -1,0 +1,46 @@
+.item-md {
+  padding-left: 0;
+  background: #333;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+.item-inner {
+  padding-left: 17px;
+  padding-right: 17px;
+  border: none !important;
+}
+
+.toolbar-background {
+  background: #222;
+}
+
+.toolbar-title {
+  color: #f4f4f4;
+}
+
+ion-content{
+  --ion-background-color:#111D12;
+}
+
+ion-toolbar{
+  --ion-background-color:#111D12;
+  --ion-text-color: white;
+}
+
+.dismiss-button {
+  color: #f4f4f4;
+}
+
+.description-box {
+  color: #E9E2DC;
+  padding: 15px 10px;
+  font-size: 26px;
+  margin: 10px 20px 10px 20px;
+}
+
+.progress-box {
+  margin: 0 20px;
+}
+
+.fixed-content, .scroll-content .progress-outer {
+  background: #333;
+}
