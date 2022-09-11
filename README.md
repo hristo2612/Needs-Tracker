@@ -4,4 +4,4 @@
 
 Sims-inspired needs tracker.
 Track your needs throughout the day.
-## An App made with Ionic & Angular.
+## An App made with Ionic & Angular
